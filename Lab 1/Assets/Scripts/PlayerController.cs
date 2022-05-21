@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -8,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float upSpeed;
     public float maxSpeed;
-    public Transform enemyLocation;
+    public Transform enemyLocation0;
+    public Transform enemyLocation1;
     public Text scoreText;
 
     private int _score;
@@ -30,10 +32,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // var moveHorizontal = Input.GetAxis("Horizontal");
-        // var movement = new Vector2(moveHorizontal, 0);
-        // _marioBody.AddForce(movement * speed);
-        //
         // toggle state
         if (Input.GetKeyDown("a") && _faceRightState)
         {
@@ -50,7 +48,13 @@ public class PlayerController : MonoBehaviour
         // when jumping, and Gomba is near Mario and we haven't registered our score
         if (!_onGroundState && _countScoreState)
         {
-            if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
+            if (Mathf.Abs(transform.position.x - enemyLocation0.position.x) < 0.5f)
+            {
+                _countScoreState = false;
+                _score++;
+                Debug.Log(_score);
+            }
+            if (Mathf.Abs(transform.position.x - enemyLocation1.position.x) < 0.5f)
             {
                 _countScoreState = false;
                 _score++;
@@ -101,6 +105,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collided with Gomba!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
