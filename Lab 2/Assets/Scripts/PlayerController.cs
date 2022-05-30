@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,9 +14,11 @@ public class PlayerController : MonoBehaviour
     private int _score;
     private bool _countScoreState;
     private bool _onGroundState = true;
+    private bool _faceRightState = true;
     private Rigidbody2D _marioBody;
     private SpriteRenderer _marioSprite;
-    private bool _faceRightState = true;
+    private Animator _marioAnimator;
+    private AudioSource _marioAudio;
 
     // Start is called before the first frame update
     private void Start()
@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 30;
         _marioBody = GetComponent<Rigidbody2D>();
         _marioSprite = GetComponent<SpriteRenderer>();
+        _marioAnimator = GetComponent<Animator>();
+        _marioAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,12 +37,14 @@ public class PlayerController : MonoBehaviour
         // toggle state
         if (Input.GetKeyDown("a") && _faceRightState)
         {
+            if (Mathf.Abs(_marioBody.velocity.x) > 1.0) _marioAnimator.SetTrigger("onSkid");
             _faceRightState = false;
             _marioSprite.flipX = true;
         }
 
         if (Input.GetKeyDown("d") && !_faceRightState)
         {
+            if (Mathf.Abs(_marioBody.velocity.x) > 1.0) _marioAnimator.SetTrigger("onSkid");
             _faceRightState = true;
             _marioSprite.flipX = false;
         }
@@ -52,15 +56,16 @@ public class PlayerController : MonoBehaviour
             {
                 _countScoreState = false;
                 _score++;
-                Debug.Log(_score);
             }
+
             if (Mathf.Abs(transform.position.x - enemyLocation1.position.x) < 0.5f)
             {
                 _countScoreState = false;
                 _score++;
-                Debug.Log(_score);
             }
         }
+
+        _marioAnimator.SetFloat("xSpeed", Mathf.Abs(_marioBody.velocity.x));
     }
 
     // FixedUpdate may be called once per frame. See documentation for details.
@@ -79,12 +84,14 @@ public class PlayerController : MonoBehaviour
         {
             // stop
             _marioBody.velocity = Vector2.zero;
+            _marioBody.angularVelocity = 0;
         }
 
         if (Input.GetKeyDown("space") && _onGroundState)
         {
             _marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             _onGroundState = false;
+            _marioAnimator.SetBool("onGround", _onGroundState);
             _countScoreState = true; //check if Gomba is underneath
         }
     }
@@ -95,6 +102,7 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.CompareTag("Ground"))
         {
             _onGroundState = true;
+            _marioAnimator.SetBool("onGround", _onGroundState);
             _countScoreState = false; // reset score state
             scoreText.text = $"Score: {_score}";
         }
@@ -107,5 +115,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collided with Gomba!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private void PlayJumpSound()
+    {
+        _marioAudio.PlayOneShot(_marioAudio.clip);
     }
 }
