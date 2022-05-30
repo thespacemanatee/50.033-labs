@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _marioSprite;
     private Animator _marioAnimator;
     private AudioSource _marioAudio;
+    private static readonly int OnGround = Animator.StringToHash("onGround");
+    private static readonly int XSpeed = Animator.StringToHash("xSpeed");
+    private static readonly int OnSkid = Animator.StringToHash("onSkid");
 
     // Start is called before the first frame update
     private void Start()
@@ -37,14 +40,14 @@ public class PlayerController : MonoBehaviour
         // toggle state
         if (Input.GetKeyDown("a") && _faceRightState)
         {
-            if (Mathf.Abs(_marioBody.velocity.x) > 1.0) _marioAnimator.SetTrigger("onSkid");
+            if (Mathf.Abs(_marioBody.velocity.x) > 1.0) _marioAnimator.SetTrigger(OnSkid);
             _faceRightState = false;
             _marioSprite.flipX = true;
         }
 
         if (Input.GetKeyDown("d") && !_faceRightState)
         {
-            if (Mathf.Abs(_marioBody.velocity.x) > 1.0) _marioAnimator.SetTrigger("onSkid");
+            if (Mathf.Abs(_marioBody.velocity.x) > 1.0) _marioAnimator.SetTrigger(OnSkid);
             _faceRightState = true;
             _marioSprite.flipX = false;
         }
@@ -65,7 +68,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        _marioAnimator.SetFloat("xSpeed", Mathf.Abs(_marioBody.velocity.x));
+        _marioAnimator.SetFloat(XSpeed, Mathf.Abs(_marioBody.velocity.x));
     }
 
     // FixedUpdate may be called once per frame. See documentation for details.
@@ -99,10 +102,10 @@ public class PlayerController : MonoBehaviour
     // called when the cube hits the floor
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Ground"))
+        if (col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Obstacle"))
         {
             _onGroundState = true;
-            _marioAnimator.SetBool("onGround", _onGroundState);
+            _marioAnimator.SetBool(OnGround, _onGroundState);
             _countScoreState = false; // reset score state
             scoreText.text = $"Score: {_score}";
         }
