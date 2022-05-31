@@ -19,6 +19,20 @@ public class MushroomController : MonoBehaviour
     {
     }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Pipe"))
+        {
+            _mushroomBody.AddForce(Vector2.right * moveSpeed, ForceMode2D.Impulse);
+            moveSpeed *= -1;
+        }
+
+        if (col.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
