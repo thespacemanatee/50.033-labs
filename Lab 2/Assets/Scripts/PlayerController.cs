@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool _countScoreState;
     private bool _onGroundState = true;
     private bool _faceRightState = true;
+    private bool _invincible;
     private Rigidbody2D _marioBody;
     private SpriteRenderer _marioSprite;
     private Animator _marioAnimator;
@@ -50,6 +53,11 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Abs(_marioBody.velocity.x) > 1.0) _marioAnimator.SetTrigger(OnSkid);
             _faceRightState = true;
             _marioSprite.flipX = false;
+        }
+
+        if (Input.GetKeyDown("p"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         // when jumping, and Gomba is near Mario and we haven't registered our score
@@ -115,13 +123,41 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Collided with Gomba!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (!_invincible)
+            {
+                Debug.Log("Collided with Gomba!");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else
+            {
+                _score += 10;
+                scoreText.text = $"Score: {_score}";
+            }
+        }
+
+        if (other.gameObject.CompareTag("SimpleMushroom"))
+        {
+            Debug.Log("Collided with Mushroom!");
+            ToggleSuperSizedMario(true);
+            StartCoroutine(SuperSizedMode());
         }
     }
 
     private void PlayJumpSound()
     {
         _marioAudio.PlayOneShot(_marioAudio.clip);
+    }
+
+    private IEnumerator SuperSizedMode()
+    {
+        yield return new WaitForSeconds(5);
+        ToggleSuperSizedMario(false);
+    }
+
+    private void ToggleSuperSizedMario(bool enable)
+    {
+        _invincible = enable;
+        _marioBody.transform.localScale = enable ? new Vector3(1.5f, 1.5f, 1.5f) : Vector3.one;
+        EventManager.TriggerEvent("setIsKillable", new Dictionary<string, object> { { "killable", enable } });
     }
 }
