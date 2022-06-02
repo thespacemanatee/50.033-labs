@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -7,10 +5,10 @@ public class CameraController : MonoBehaviour
     public Transform player; // Mario's Transform
     public Transform endLimit; // GameObject that indicates end of map
     public Transform startLimit; // GameObject that indicates start of map
+    private float _endX; // largest x-coordinate of the camera
 
     private float _offset; // initial x-offset between camera and Mario
     private float _startX; // smallest x-coordinate of the Camera
-    private float _endX; // largest x-coordinate of the camera
     private float _viewportHalfWidth;
 
     // Start is called before the first frame update

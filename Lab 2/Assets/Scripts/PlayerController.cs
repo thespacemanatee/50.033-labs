@@ -6,25 +6,25 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int OnGround = Animator.StringToHash("onGround");
+    private static readonly int XSpeed = Animator.StringToHash("xSpeed");
+    private static readonly int OnSkid = Animator.StringToHash("onSkid");
     public float speed;
     public float upSpeed;
     public float maxSpeed;
     public Transform enemyLocation0;
     public Transform enemyLocation1;
     public Text scoreText;
-
-    private int _score;
     private bool _countScoreState;
-    private bool _onGroundState = true;
     private bool _faceRightState = true;
     private bool _invincible;
-    private Rigidbody2D _marioBody;
-    private SpriteRenderer _marioSprite;
     private Animator _marioAnimator;
     private AudioSource _marioAudio;
-    private static readonly int OnGround = Animator.StringToHash("onGround");
-    private static readonly int XSpeed = Animator.StringToHash("xSpeed");
-    private static readonly int OnSkid = Animator.StringToHash("onSkid");
+    private Rigidbody2D _marioBody;
+    private SpriteRenderer _marioSprite;
+    private bool _onGroundState = true;
+
+    private int _score;
 
     // Start is called before the first frame update
     private void Start()
@@ -55,10 +55,7 @@ public class PlayerController : MonoBehaviour
             _marioSprite.flipX = false;
         }
 
-        if (Input.GetKeyDown("p"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        if (Input.GetKeyDown("p")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         // when jumping, and Gomba is near Mario and we haven't registered our score
         if (!_onGroundState && _countScoreState)
@@ -102,7 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             _marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             _onGroundState = false;
-            _marioAnimator.SetBool("onGround", _onGroundState);
+            _marioAnimator.SetBool(OnGround, _onGroundState);
             _countScoreState = true; //check if Gomba is underneath
         }
     }
@@ -138,7 +135,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("SimpleMushroom"))
         {
             Debug.Log("Collided with Mushroom!");
-            ToggleSuperSizedMario(true);
             StartCoroutine(SuperSizedMode());
         }
     }
@@ -150,6 +146,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator SuperSizedMode()
     {
+        ToggleSuperSizedMario(true);
         yield return new WaitForSeconds(5);
         ToggleSuperSizedMario(false);
     }

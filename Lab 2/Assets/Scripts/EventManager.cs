@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    private Dictionary<string, Action<Dictionary<string, object>>> _events;
-
     private static EventManager _eventManager;
+    private Dictionary<string, Action<Dictionary<string, object>>> _events;
 
     private static EventManager Instance
     {
@@ -36,7 +35,7 @@ public class EventManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Start listening to an event
+    ///     Start listening to an event
     /// </summary>
     /// <param name="eventName">Event name</param>
     /// <param name="listener">Callback listener</param>
@@ -56,7 +55,7 @@ public class EventManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Stop listening to an event
+    ///     Stop listening to an event
     /// </summary>
     /// <param name="eventName">Event name</param>
     /// <param name="listener">Callback listener</param>
@@ -69,16 +68,13 @@ public class EventManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Triggers the callback attached to an event with data
+    ///     Triggers the callback attached to an event with data
     /// </summary>
     /// <param name="eventName">Event name</param>
     /// <param name="message">Callback message</param>
     public static void TriggerEvent(string eventName, Dictionary<string, object> message)
     {
         // Get the event and invoke the listener callback with the message
-        if (Instance._events.TryGetValue(eventName, out var @event))
-        {
-            @event.Invoke(message);
-        }
+        if (Instance._events.TryGetValue(eventName, out var @event)) @event.Invoke(message);
     }
 }

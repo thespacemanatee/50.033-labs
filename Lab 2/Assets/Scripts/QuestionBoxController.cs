@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestionBoxController : MonoBehaviour
@@ -9,17 +8,7 @@ public class QuestionBoxController : MonoBehaviour
     public GameObject consumablePrefab; // the spawned mushroom prefab
     public SpriteRenderer spriteRenderer;
     public Sprite usedQuestionBox; // the sprite that indicates empty box instead of a question mark
-    private bool _hit = false;
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
+    private bool _hit;
 
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -42,10 +31,7 @@ public class QuestionBoxController : MonoBehaviour
 
     private IEnumerator DisableHittable()
     {
-        if (!ObjectMovedAndStopped())
-        {
-            yield return new WaitUntil(() => ObjectMovedAndStopped());
-        }
+        if (!ObjectMovedAndStopped()) yield return new WaitUntil(() => ObjectMovedAndStopped());
 
         // continues here when the ObjectMovedAndStopped() returns true
         spriteRenderer.sprite = usedQuestionBox; // change sprite to be "used-box" sprite

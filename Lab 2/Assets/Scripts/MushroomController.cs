@@ -14,9 +14,9 @@ public class MushroomController : MonoBehaviour
         _mushroomBody.AddForce(Vector2.left * moveSpeed, ForceMode2D.Impulse);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnBecameInvisible()
     {
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -27,14 +27,6 @@ public class MushroomController : MonoBehaviour
             moveSpeed *= -1;
         }
 
-        if (col.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
+        if (col.gameObject.CompareTag("Player")) Destroy(gameObject);
     }
 }

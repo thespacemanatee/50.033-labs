@@ -5,8 +5,8 @@ public class EnemyController : MonoBehaviour
 {
     public float moveSpeed;
     public bool initialLeft;
-    private bool _isKillable;
     private Rigidbody2D _enemyBody;
+    private bool _isKillable;
 
     // Start is called before the first frame update
     private void Start()
@@ -14,12 +14,6 @@ public class EnemyController : MonoBehaviour
         _enemyBody = GetComponent<Rigidbody2D>();
         _enemyBody.AddForce(GetForce(Vector2.left), ForceMode2D.Impulse);
     }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
 
     private void OnEnable()
     {
@@ -40,10 +34,7 @@ public class EnemyController : MonoBehaviour
             moveSpeed *= -1;
         }
 
-        if (col.gameObject.CompareTag("Player") && _isKillable)
-        {
-            Destroy(gameObject);
-        }
+        if (col.gameObject.CompareTag("Player") && _isKillable) Destroy(gameObject);
     }
 
     private void SetIsKillable(Dictionary<string, object> message)
