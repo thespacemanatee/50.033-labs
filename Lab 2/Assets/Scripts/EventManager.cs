@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    private Dictionary<string, Action<Dictionary<string, object>>> _eventDictionary;
+    private Dictionary<string, Action<Dictionary<string, object>>> _events;
 
     private static EventManager _eventManager;
 
@@ -17,7 +17,7 @@ public class EventManager : MonoBehaviour
 
             if (!_eventManager)
             {
-                Debug.LogError("There needs to be one active EventManager script on a GameObject in your scene.");
+                Debug.LogError("GameObject with EventManager was not found!");
             }
             else
             {
@@ -32,7 +32,7 @@ public class EventManager : MonoBehaviour
     private void Init()
     {
         // Create event dictionary if it doesn't exist
-        _eventDictionary ??= new Dictionary<string, Action<Dictionary<string, object>>>();
+        _events ??= new Dictionary<string, Action<Dictionary<string, object>>>();
     }
 
     /// <summary>
@@ -43,15 +43,15 @@ public class EventManager : MonoBehaviour
     public static void StartListening(string eventName, Action<Dictionary<string, object>> listener)
     {
         // Replace the listener if it already exists, otherwise add it
-        if (Instance._eventDictionary.TryGetValue(eventName, out var thisEvent))
+        if (Instance._events.TryGetValue(eventName, out var @event))
         {
-            thisEvent += listener;
-            Instance._eventDictionary[eventName] = thisEvent;
+            @event += listener;
+            Instance._events[eventName] = @event;
         }
         else
         {
-            thisEvent += listener;
-            Instance._eventDictionary.Add(eventName, thisEvent);
+            @event += listener;
+            Instance._events.Add(eventName, @event);
         }
     }
 
@@ -63,9 +63,9 @@ public class EventManager : MonoBehaviour
     public static void StopListening(string eventName, Action<Dictionary<string, object>> listener)
     {
         if (_eventManager == null) return;
-        if (!Instance._eventDictionary.TryGetValue(eventName, out var thisEvent)) return;
-        thisEvent -= listener;
-        Instance._eventDictionary[eventName] = thisEvent;
+        if (!Instance._events.TryGetValue(eventName, out var @event)) return;
+        @event -= listener;
+        Instance._events[eventName] = @event;
     }
 
     /// <summary>
@@ -76,9 +76,9 @@ public class EventManager : MonoBehaviour
     public static void TriggerEvent(string eventName, Dictionary<string, object> message)
     {
         // Get the event and invoke the listener callback with the message
-        if (Instance._eventDictionary.TryGetValue(eventName, out var thisEvent))
+        if (Instance._events.TryGetValue(eventName, out var @event))
         {
-            thisEvent.Invoke(message);
+            @event.Invoke(message);
         }
     }
 }
