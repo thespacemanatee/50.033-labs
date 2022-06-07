@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Transform enemyLocation0;
     public Transform enemyLocation1;
     public Text scoreText;
+    public ParticleSystem dustCloud;
     private bool _countScoreState;
     private bool _faceRightState = true;
     private bool _invincible;
@@ -113,6 +114,7 @@ public class PlayerController : MonoBehaviour
             _marioAnimator.SetBool(OnGround, _onGroundState);
             _countScoreState = false; // reset score state
             scoreText.text = $"Score: {_score}";
+            dustCloud.Play();
         }
     }
 

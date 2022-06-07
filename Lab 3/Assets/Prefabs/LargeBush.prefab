@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,6 +89,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 835389604103094086, guid: 298debaae3bd346e688e0d9d96808db1, type: 3}
@@ -144,6 +145,10 @@ PrefabInstance:
       value: LargeBush
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4634119395536937459, guid: 298debaae3bd346e688e0d9d96808db1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2512697611095594071}
   m_SourcePrefab: {fileID: 100100000, guid: 298debaae3bd346e688e0d9d96808db1, type: 3}
 --- !u!4 &8609082245385640666 stripped
 Transform:

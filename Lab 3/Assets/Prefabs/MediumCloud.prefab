@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,6 +173,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 409409576817890735, guid: 73a5f783fb8aa41d7b76d662babc6544, type: 3}
@@ -240,6 +241,13 @@ PrefabInstance:
       value: BottomMiddle 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7218708747879978640, guid: 73a5f783fb8aa41d7b76d662babc6544, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2765861975452647305}
+    - targetCorrespondingSourceObject: {fileID: 7218708747879978640, guid: 73a5f783fb8aa41d7b76d662babc6544, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1586273589033021430}
   m_SourcePrefab: {fileID: 100100000, guid: 73a5f783fb8aa41d7b76d662babc6544, type: 3}
 --- !u!4 &5125292774546687794 stripped
 Transform:

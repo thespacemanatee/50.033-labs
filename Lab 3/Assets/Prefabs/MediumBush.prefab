@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,6 +89,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1222687644112528783, guid: ebf564f9c01e547e290244058a5657ee, type: 3}
@@ -148,6 +149,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3965440304306037645, guid: ebf564f9c01e547e290244058a5657ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1265583012177451449}
   m_SourcePrefab: {fileID: 100100000, guid: ebf564f9c01e547e290244058a5657ee, type: 3}
 --- !u!4 &4634119395536937459 stripped
 Transform:
