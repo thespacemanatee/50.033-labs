@@ -4,13 +4,7 @@ using UnityEngine;
 public class BreakBrick : MonoBehaviour
 {
     public GameObject prefab;
-    private AudioSource _breakAudio;
     private bool _broken;
-
-    private void Start()
-    {
-        _breakAudio = GetComponent<AudioSource>();
-    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -25,8 +19,8 @@ public class BreakBrick : MonoBehaviour
         var parent = gameObject.transform.parent;
         parent.GetComponent<SpriteRenderer>().enabled = false;
         parent.GetComponent<BoxCollider2D>().enabled = false;
+        parent.GetComponent<AudioSource>().Play();
         GetComponent<EdgeCollider2D>().enabled = false;
-        _breakAudio.PlayOneShot(_breakAudio.clip);
         Destroy(gameObject);
     }
 }
