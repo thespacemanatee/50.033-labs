@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 5072315349427701105}
   - component: {fileID: -2037094414351815617}
   - component: {fileID: 1904681591067282160}
-  - component: {fileID: 3990287811618077250}
+  - component: {fileID: 6836113930387745359}
   m_Layer: 8
-  m_Name: ConsumableMushroomSimple
+  m_Name: BlueMushroom
   m_TagString: SimpleMushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -195628081
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cbe738a6b31804fbfa01d65f850d595b, type: 3}
+  m_Sprite: {fileID: 21300018, guid: cbe738a6b31804fbfa01d65f850d595b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upSpeed: 5
   moveSpeed: 10
---- !u!114 &3990287811618077250
+--- !u!114 &6836113930387745359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5072315349427701106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3a0577538214fb3a73f224c7bdf7d8b, type: 3}
+  m_Script: {fileID: 11500000, guid: dcb10578341d4c7b977117c529868a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   t: {fileID: 10900, guid: 0000000000000000f000000000000000, type: 0}

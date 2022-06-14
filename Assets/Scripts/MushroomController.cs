@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MushroomController : MonoBehaviour
@@ -16,7 +17,7 @@ public class MushroomController : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -27,6 +28,28 @@ public class MushroomController : MonoBehaviour
             moveSpeed *= -1;
         }
 
-        if (col.gameObject.CompareTag("Player")) Destroy(gameObject);
+        if (col.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(CollectedAnimation());
+        }
+    }
+
+    private IEnumerator CollectedAnimation()
+    {
+        Debug.Log("Collected mushroom");
+        const int steps = 5;
+        const float stepper = 1.0f / steps;
+
+        for (var i = 0; i < steps; i++)
+        {
+            var transform1 = transform;
+            var localScale = transform1.localScale;
+            localScale = new Vector3(localScale.x + stepper, localScale.y + stepper,
+                localScale.z + stepper);
+            transform1.localScale = localScale;
+            yield return null;
+        }
+
+        gameObject.SetActive(false);
     }
 }

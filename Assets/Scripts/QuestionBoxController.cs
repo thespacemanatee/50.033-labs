@@ -18,9 +18,10 @@ public class QuestionBoxController : MonoBehaviour
         rigidBody.AddForce(new Vector2(0, rigidBody.mass * 20), ForceMode2D.Impulse);
         // spawn the mushroom prefab slightly above the box
         var position = transform.position;
-        Instantiate(consumablePrefab,
+        var shroom = Instantiate(consumablePrefab,
             new Vector3(position.x, position.y + 1.0f, position.z),
             Quaternion.identity);
+        shroom.SetActive(true);
         StartCoroutine(DisableHittable());
     }
 

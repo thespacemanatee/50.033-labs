@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         _marioAnimator = GetComponent<Animator>();
         _marioAudio = GetComponent<AudioSource>();
     }
-    
+
     private void OnEnable()
     {
         EventManager.StartListening("OnPlayerDeath", PlayerDiesSequence);
@@ -67,6 +67,16 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetKeyDown("p")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (Input.GetKeyDown("z"))
+        {
+            CentralManager.centralManagerInstance.ConsumePowerUp(KeyCode.Z, gameObject);
+        }
+
+        if (Input.GetKeyDown("x"))
+        {
+            CentralManager.centralManagerInstance.ConsumePowerUp(KeyCode.X, gameObject);
+        }
 
         // when jumping, and Gomba is near Mario and we haven't registered our score
         if (!_onGroundState && _countScoreState)

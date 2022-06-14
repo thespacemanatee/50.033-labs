@@ -11,7 +11,7 @@ public class MenuController : MonoBehaviour
     {
         foreach (Transform eachChild in transform)
         {
-            if (eachChild.name == "Score") continue;
+            if (eachChild.name is "Score" or "PowerUps") continue;
             Debug.Log($"Child found. Name: {eachChild.name}");
             // disable them
             eachChild.gameObject.SetActive(false);

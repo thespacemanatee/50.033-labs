@@ -19,4 +19,6 @@ MonoBehaviour:
   breakDebrisForce: 10
   spawnNumberOfDebris: 10
   rotatorRotateSpeed: 6
+  enemyMoveSpeed: 3
+  groundSurface: -1.5
   testValue: 0

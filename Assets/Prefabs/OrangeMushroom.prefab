@@ -14,14 +14,14 @@ GameObject:
   - component: {fileID: 5072315349427701105}
   - component: {fileID: -2037094414351815617}
   - component: {fileID: 1904681591067282160}
-  - component: {fileID: 3990287811618077250}
+  - component: {fileID: 9185493760259416331}
   m_Layer: 8
-  m_Name: ConsumableMushroomSimple
+  m_Name: OrangeMushroom
   m_TagString: SimpleMushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5072315349427701110
 Transform:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upSpeed: 5
   moveSpeed: 10
---- !u!114 &3990287811618077250
+--- !u!114 &9185493760259416331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
