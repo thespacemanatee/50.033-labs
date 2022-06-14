@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,22 +8,23 @@ public class PlayerMovement : MonoBehaviour
 	public Animator animator;
 	public Rigidbody2D rb;
 
-	Vector2 move;
+	private Vector2 _move;
 
-	SpriteRenderer sr;
+	private SpriteRenderer _sr;
+	private static readonly int Speed = Animator.StringToHash("Speed");
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	private void Start()
     {
-		sr = GetComponent<SpriteRenderer>();
+		_sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-		move.x = Input.GetAxisRaw("Horizontal");
+		_move.x = Input.GetAxisRaw("Horizontal");
 
-		animator.SetFloat("Speed", Mathf.Abs(move.x));
+		animator.SetFloat(Speed, Mathf.Abs(_move.x));
 
 		if (Input.GetButtonDown("Fire1"))
 		{
@@ -35,14 +34,13 @@ public class PlayerMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
+		rb.MovePosition(rb.position + _move * (speed * Time.fixedDeltaTime));
 
-		if (move.x < 0f)
+		_sr.flipX = _move.x switch
 		{
-			sr.flipX = true;
-		} else if (move.x > 0f)
-		{
-			sr.flipX = false;
-		}
+			< 0f => true,
+			> 0f => false,
+			_ => _sr.flipX
+		};
 	}
 }

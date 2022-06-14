@@ -37,6 +37,16 @@ public class PlayerController : MonoBehaviour
         _marioAnimator = GetComponent<Animator>();
         _marioAudio = GetComponent<AudioSource>();
     }
+    
+    private void OnEnable()
+    {
+        EventManager.StartListening("OnPlayerDeath", PlayerDiesSequence);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("OnPlayerDeath", PlayerDiesSequence);
+    }
 
     // Update is called once per frame
     private void Update()
@@ -125,7 +135,7 @@ public class PlayerController : MonoBehaviour
             if (!_invincible)
             {
                 Debug.Log("Collided with Gomba!");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             else
             {
@@ -144,6 +154,14 @@ public class PlayerController : MonoBehaviour
     private void PlayJumpSound()
     {
         _marioAudio.PlayOneShot(_marioAudio.clip);
+    }
+
+    private static void PlayerDiesSequence(Dictionary<string, object> message)
+    {
+        // Mario dies
+        Debug.Log("Mario dies");
+        // do whatever you want here, animate etc
+        // ...
     }
 
     private IEnumerator SuperSizedMode()

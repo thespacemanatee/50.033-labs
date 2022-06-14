@@ -173,5 +173,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e1d0f4a41884ad7b27ab4bd3fdcf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  initialLeft: 0
+  gameConstants: {fileID: 11400000, guid: 33c3e527d537a4b78b720597a330d3e7, type: 2}
