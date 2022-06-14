@@ -50,6 +50,6 @@ public class MushroomController : MonoBehaviour
             yield return null;
         }
 
-        gameObject.SetActive(false);
+        transform.position = new Vector3(-10, -10, -10);
     }
 }

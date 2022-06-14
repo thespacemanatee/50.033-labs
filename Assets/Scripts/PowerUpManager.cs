@@ -28,6 +28,7 @@ public class PowerUpManager : MonoBehaviour
 
     private void RemovePowerUp(int index)
     {
+        Debug.Log("Removing: " + index);
         if (index >= powerUpIcons.Count) return;
         powerUpIcons[index].SetActive(false);
         _powerUps[index] = null;

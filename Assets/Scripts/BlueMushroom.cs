@@ -8,7 +8,7 @@ public class BlueMushroom : MonoBehaviour, IConsumable
     public void ConsumedBy(GameObject player)
     {
         // give player jump boost
-        player.GetComponent<PlayerController>().maxSpeed *= 10;
+        player.GetComponent<PlayerController>().maxSpeed *= 5;
         StartCoroutine(RemoveEffect(player));
     }
 
@@ -20,9 +20,10 @@ public class BlueMushroom : MonoBehaviour, IConsumable
         GetComponent<Collider2D>().enabled = false;
     }
 
-    private static IEnumerator RemoveEffect(GameObject player)
+    private IEnumerator RemoveEffect(GameObject player)
     {
         yield return new WaitForSeconds(5.0f);
-        player.GetComponent<PlayerController>().maxSpeed /= 10;
+        player.GetComponent<PlayerController>().maxSpeed /= 5;
+        Destroy(gameObject);
     }
 }

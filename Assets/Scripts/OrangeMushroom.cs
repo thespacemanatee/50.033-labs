@@ -20,9 +20,10 @@ public class OrangeMushroom : MonoBehaviour, IConsumable
         GetComponent<Collider2D>().enabled = false;
     }
 
-    private static IEnumerator RemoveEffect(GameObject player)
+    private IEnumerator RemoveEffect(GameObject player)
     {
         yield return new WaitForSeconds(5.0f);
         player.GetComponent<PlayerController>().upSpeed -= 20;
+        Destroy(gameObject);
     }
 }
