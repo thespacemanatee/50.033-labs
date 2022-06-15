@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     private static IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(1.0f);
-        EventManager.TriggerEvent("EndGame", null);
+        yield return new WaitForSeconds(4.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

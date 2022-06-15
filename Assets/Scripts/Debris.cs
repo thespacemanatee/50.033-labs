@@ -11,7 +11,7 @@ public class Debris : MonoBehaviour
     private void Start()
     {
         // we want the object to have a scale of 0 (disappear) after 30 frames. 
-        _scaler = transform.localScale / (float)30;
+        _scaler = transform.localScale / 30;
         _rigidBody = GetComponent<Rigidbody2D>();
         StartCoroutine(nameof(ScaleOut));
     }

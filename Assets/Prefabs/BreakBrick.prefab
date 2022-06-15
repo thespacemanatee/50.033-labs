@@ -67,7 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790553446cdd74485ae0e9629889b8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4808803878724637932, guid: 3452589e987e3465181c6df4b9b63793, type: 3}
+  gameConstants: {fileID: 11400000, guid: 33c3e527d537a4b78b720597a330d3e7, type: 2}
+  debrisPrefab: {fileID: 4808803878724637932, guid: 3452589e987e3465181c6df4b9b63793, type: 3}
+  coinPrefab: {fileID: 6753691600682507693, guid: db3ce791ef0a04b6e948a4bdfb78dfd2, type: 3}
 --- !u!1 &8444597355540820227
 GameObject:
   m_ObjectHideFlags: 0

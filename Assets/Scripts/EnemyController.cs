@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour
 {
     public GameConstants gameConstants;
     private float _enemyMoveSpeed;
     private int _moveLeft;
+    private SpriteRenderer _enemySprite;
     private Rigidbody2D _enemyBody;
+    private AudioSource _deathSound;
+    private bool _rejoicing;
 
     // Start is called before the first frame update
     private void Start()
     {
+        _enemySprite = GetComponent<SpriteRenderer>();
         _enemyBody = GetComponent<Rigidbody2D>();
+        _deathSound = GetComponent<AudioSource>();
         _moveLeft = Random.Range(0, 2) == 0 ? -1 : 1;
         _enemyMoveSpeed = gameConstants.enemyMoveSpeed;
         _enemyBody.AddForce(GetForce(Vector2.left), ForceMode2D.Impulse);
@@ -26,6 +32,14 @@ public class EnemyController : MonoBehaviour
     private void OnDisable()
     {
         EventManager.StopListening("OnPlayerDeath", EnemyRejoice);
+    }
+
+    private void Update()
+    {
+        if (_rejoicing)
+        {
+            _enemySprite.flipX = !_enemySprite.flipX;
+        }
     }
 
 
@@ -56,8 +70,13 @@ public class EnemyController : MonoBehaviour
     private void KillSelf()
     {
         // enemy dies
+        if (_deathSound)
+        {
+            _deathSound.Play();
+        }
+
         CentralManager.centralManagerInstance.IncreaseScore();
-        CentralManager.centralManagerInstance.SpawnEnemy();
+        CentralManager.SpawnEnemy();
         StartCoroutine(Flatten());
         Debug.Log("Kill sequence ends");
     }
@@ -88,11 +107,12 @@ public class EnemyController : MonoBehaviour
     }
 
     // animation when player is dead
-    private static void EnemyRejoice(Dictionary<string, object> message)
+    private void EnemyRejoice(Dictionary<string, object> message)
     {
         Debug.Log("Enemy killed Mario");
         // do whatever you want here, animate etc
         // ...
+        _rejoicing = true;
     }
 
     private Vector2 GetForce(Vector2 direction)

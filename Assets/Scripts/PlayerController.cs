@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,18 +12,14 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed;
     public Transform enemyLocation0;
     public Transform enemyLocation1;
-    public Text scoreText;
     public ParticleSystem dustCloud;
-    private bool _countScoreState;
     private bool _faceRightState = true;
     private Animator _marioAnimator;
     private AudioSource _marioAudio;
     private Rigidbody2D _marioBody;
     private SpriteRenderer _marioSprite;
     private bool _onGroundState = true;
-    private bool _inputDisabled = false;
-
-    private int _score;
+    private bool _inputDisabled;
 
     // Start is called before the first frame update
     private void Start()
@@ -79,22 +73,6 @@ public class PlayerController : MonoBehaviour
             CentralManager.centralManagerInstance.ConsumePowerUp(KeyCode.X, gameObject);
         }
 
-        // when jumping, and Gomba is near Mario and we haven't registered our score
-        if (!_onGroundState && _countScoreState)
-        {
-            if (Mathf.Abs(transform.position.x - enemyLocation0.position.x) < 0.5f)
-            {
-                _countScoreState = false;
-                _score++;
-            }
-
-            if (Mathf.Abs(transform.position.x - enemyLocation1.position.x) < 0.5f)
-            {
-                _countScoreState = false;
-                _score++;
-            }
-        }
-
         _marioAnimator.SetFloat(XSpeed, Mathf.Abs(_marioBody.velocity.x));
     }
 
@@ -123,7 +101,6 @@ public class PlayerController : MonoBehaviour
             _marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             _onGroundState = false;
             _marioAnimator.SetBool(OnGround, _onGroundState);
-            _countScoreState = true; //check if Gomba is underneath
         }
     }
 
@@ -134,8 +111,6 @@ public class PlayerController : MonoBehaviour
         {
             _onGroundState = true;
             _marioAnimator.SetBool(OnGround, _onGroundState);
-            _countScoreState = false; // reset score state
-            scoreText.text = $"Score: {_score}";
             dustCloud.Play();
         }
     }

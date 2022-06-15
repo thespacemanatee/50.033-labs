@@ -33,9 +33,9 @@ public class CentralManager : MonoBehaviour
         _gameManager.IncreaseScore();
     }
 
-    public void SpawnEnemy()
+    public static void SpawnEnemy()
     {
-        _spawnManager.SpawnFromPooler(Random.Range(0, 2) == 0 ? ObjectType.GreenEnemy : ObjectType.GoombaEnemy);
+        SpawnManager.Respawn(Random.Range(0, 2) == 0 ? ObjectType.GreenEnemy : ObjectType.GoombaEnemy);
     }
 
     public void DamagePlayer(Vector3 location)

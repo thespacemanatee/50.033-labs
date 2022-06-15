@@ -205,6 +205,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-2967793273714763997
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 364924fcf202248afb66aacaeb6244a3
+  m_EffectName: Attenuation
+  m_MixLevel: 16f40f0030df344f7a987e101832bd91
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-2375209483372978531
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -251,9 +265,10 @@ AudioMixerController:
     - 9d37e981ed23144c19d8a7500a1c98f0
     - 71527ae8a19b74e138754e63dc7ce5e7
     - ac934b00ce3f74ff2874e01dbb96aae4
+    - d216d2ee0026d4ce59d92ea21313226e
     name: SFXs only
   m_CurrentViewIndex: 1
-  m_TargetSnapshot: {fileID: 8277177365143085928}
+  m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -269,6 +284,7 @@ AudioMixerGroupController:
   - {fileID: -4124726687792660727}
   - {fileID: 5874436695136329685}
   - {fileID: -8905154255062908272}
+  - {fileID: 2511132421834693773}
   m_Volume: ecd8974b75d394dcd8ed4f4f6fd2c90b
   m_Pitch: 48fbd1f4ac28a4e0189a434e844b7079
   m_Send: 00000000000000000000000000000000
@@ -315,7 +331,9 @@ AudioMixerSnapshotController:
     78021ae9aa38a4e498da90aca7ef3edc: 1000
     2019f1eaa0a9d4a6d9e4f31d3bc4b114: 0
     f739abcb0da37446eb04a5543764bfd7: -1000
+    cbd0e4fdec4a54789a6e13f4afb188e4: 0.648
     a814586eb368b48ba94334ff2277193a: 60
+    8f4761fe41d8c43009e45519981cfbdc: -3.1841109
     2d1faf5ffcae04516acc9345973d3f9f: -8.362404
     b545b4ef20db449da92dc77ea87fc057: -1200
   m_TransitionOverrides: {}
@@ -350,6 +368,42 @@ AudioMixerGroupController:
   - {fileID: -3152727074224707622}
   - {fileID: -3205707214051835815}
   m_UserColorIndex: 2
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &2064175233129250631
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 2cf25aab551d1427793528b6a991e454
+  m_EffectName: Distortion
+  m_MixLevel: 8aff53115f5604378982eb8962f0cb6f
+  m_Parameters:
+  - m_ParameterName: Level
+    m_GUID: cbd0e4fdec4a54789a6e13f4afb188e4
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &2511132421834693773
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Destroy SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: d216d2ee0026d4ce59d92ea21313226e
+  m_Children: []
+  m_Volume: 8f4761fe41d8c43009e45519981cfbdc
+  m_Pitch: c5011d02f46b84e0da48e8560abb258f
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -2967793273714763997}
+  - {fileID: 2064175233129250631}
+  m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

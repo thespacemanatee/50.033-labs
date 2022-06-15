@@ -2736,7 +2736,6 @@ MonoBehaviour:
   maxSpeed: 10
   enemyLocation0: {fileID: 787978672}
   enemyLocation1: {fileID: 1585174073}
-  scoreText: {fileID: 956328612}
   dustCloud: {fileID: 263018298}
 --- !u!95 &927514962
 Animator:
