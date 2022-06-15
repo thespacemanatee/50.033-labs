@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour
     private float _enemyMoveSpeed;
     private int _moveLeft;
     private Rigidbody2D _enemyBody;
-    private bool _isKillable;
 
     // Start is called before the first frame update
     private void Start()
@@ -21,13 +20,11 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.StartListening("setIsKillable", SetIsKillable);
         EventManager.StartListening("OnPlayerDeath", EnemyRejoice);
     }
 
     private void OnDisable()
     {
-        EventManager.StopListening("setIsKillable", SetIsKillable);
         EventManager.StopListening("OnPlayerDeath", EnemyRejoice);
     }
 
@@ -44,14 +41,14 @@ public class EnemyController : MonoBehaviour
         {
             // check if collides on top
             var yOffset = (col.transform.position.y - transform.position.y);
-            if (yOffset > 0.75f || _isKillable)
+            if (yOffset > 0.75f)
             {
                 KillSelf();
             }
             else
             {
                 // hurt player, implement later
-                CentralManager.DamagePlayer();
+                CentralManager.centralManagerInstance.DamagePlayer(_enemyBody.transform.position);
             }
         }
     }
@@ -60,6 +57,7 @@ public class EnemyController : MonoBehaviour
     {
         // enemy dies
         CentralManager.centralManagerInstance.IncreaseScore();
+        CentralManager.centralManagerInstance.SpawnEnemy();
         StartCoroutine(Flatten());
         Debug.Log("Kill sequence ends");
     }
@@ -95,12 +93,6 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Enemy killed Mario");
         // do whatever you want here, animate etc
         // ...
-    }
-
-    private void SetIsKillable(Dictionary<string, object> message)
-    {
-        var killable = (bool)message["killable"];
-        _isKillable = killable;
     }
 
     private Vector2 GetForce(Vector2 direction)

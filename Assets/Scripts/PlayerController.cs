@@ -18,12 +18,12 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem dustCloud;
     private bool _countScoreState;
     private bool _faceRightState = true;
-    private bool _invincible;
     private Animator _marioAnimator;
     private AudioSource _marioAudio;
     private Rigidbody2D _marioBody;
     private SpriteRenderer _marioSprite;
     private bool _onGroundState = true;
+    private bool _inputDisabled = false;
 
     private int _score;
 
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (_inputDisabled) return;
         // toggle state
         if (Input.GetKeyDown("a") && _faceRightState)
         {
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour
     // FixedUpdate may be called once per frame. See documentation for details.
     private void FixedUpdate()
     {
+        if (_inputDisabled) return;
         // dynamic rigidbody
         var moveHorizontal = Input.GetAxis("Horizontal");
         if (Mathf.Abs(moveHorizontal) > 0)
@@ -142,22 +144,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (!_invincible)
-            {
-                Debug.Log("Collided with Gomba!");
-                // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-            else
-            {
-                _score += 10;
-                scoreText.text = $"Score: {_score}";
-            }
-        }
-
-        if (other.gameObject.CompareTag("SimpleMushroom"))
-        {
-            Debug.Log("Collided with Mushroom!");
-            StartCoroutine(SuperSizedMode());
+            Debug.Log("Collided with Gomba!");
         }
     }
 
@@ -166,25 +153,24 @@ public class PlayerController : MonoBehaviour
         _marioAudio.PlayOneShot(_marioAudio.clip);
     }
 
-    private static void PlayerDiesSequence(Dictionary<string, object> message)
+    private void PlayerDiesSequence(Dictionary<string, object> message)
     {
         // Mario dies
         Debug.Log("Mario dies");
         // do whatever you want here, animate etc
         // ...
-    }
+        _inputDisabled = true;
+        var location = (Vector3)message["location"];
+        if (location.x < _marioBody.transform.position.x)
+        {
+            _marioBody.AddForce(Vector2.right * 50, ForceMode2D.Impulse);
+        }
+        else
+        {
+            _marioBody.AddForce(Vector2.left * 50, ForceMode2D.Impulse);
+        }
 
-    private IEnumerator SuperSizedMode()
-    {
-        ToggleSuperSizedMario(true);
-        yield return new WaitForSeconds(5);
-        ToggleSuperSizedMario(false);
-    }
-
-    private void ToggleSuperSizedMario(bool enable)
-    {
-        _invincible = enable;
-        _marioBody.transform.localScale = enable ? new Vector3(1.5f, 1.5f, 1.5f) : Vector3.one;
-        EventManager.TriggerEvent("setIsKillable", new Dictionary<string, object> { { "killable", enable } });
+        _marioBody.AddForce(Vector2.up * 50, ForceMode2D.Impulse);
+        _marioBody.freezeRotation = false;
     }
 }

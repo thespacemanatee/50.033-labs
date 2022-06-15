@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +14,15 @@ public class GameManager : MonoBehaviour
         score.text = "SCORE: " + _playerScore;
     }
 
-    public static void DamagePlayer()
+    public void DamagePlayer(Vector3 location)
     {
-        EventManager.TriggerEvent("OnPlayerDeath", null);
+        EventManager.TriggerEvent("OnPlayerDeath", new Dictionary<string, object> { { "location", location } });
+        StartCoroutine(EndGame());
+    }
+
+    private static IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(1.0f);
+        EventManager.TriggerEvent("EndGame", null);
     }
 }

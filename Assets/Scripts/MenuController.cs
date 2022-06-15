@@ -1,10 +1,22 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
     private void Awake()
     {
         Time.timeScale = 0.0f;
+    }
+
+    private void OnEnable()
+    {
+        EventManager.StartListening("EndGame", ResetGame);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("EndGame", ResetGame);
     }
 
     public void StartButtonClicked()
@@ -17,5 +29,10 @@ public class MenuController : MonoBehaviour
             eachChild.gameObject.SetActive(false);
             Time.timeScale = 1.0f;
         }
+    }
+
+    private static void ResetGame(Dictionary<string, object> message)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

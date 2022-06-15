@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    static void SpawnFromPooler(ObjectType i)
+    public void SpawnFromPooler(ObjectType i)
     {
         // static method access
         var item = ObjectPooler.sharedInstance.GetPooledObject(i);
