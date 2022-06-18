@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c8f776c-1230-4e29-acb4-a26bc24b3e49" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Mario.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Mario.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/MarioLevel1.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/MarioLevel1.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/MarioLevel2.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/MarioLevel2.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.50.033-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.50.033-lab/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Mario.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Mario.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BreakBrick.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BreakBrick.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Mario.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Mario.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +144,7 @@
       <workItem from="1655303540226" duration="3123000" />
       <workItem from="1655306692821" duration="5720000" />
       <workItem from="1655350772350" duration="2624000" />
+      <workItem from="1655553748270" duration="5082000" />
     </task>
     <servers />
   </component>
