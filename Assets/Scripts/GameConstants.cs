@@ -7,6 +7,11 @@ public class GameConstants : ScriptableObject
     // for Scoring system
     private int _currentScore;
     private int _currentPlayerHealth;
+    
+    // Mario basic starting values
+    public int playerMaxSpeed = 10;
+    public int playerJumpSpeed = 50;
+    public int playerDefaultForce = 150;
 
     // for Reset values
     Vector3 _goombaSpawnPointStart = new(2.5f, -0.45f, 0); // hardcoded location
