@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 6600608559804100265}
   m_Layer: 0
   m_Name: BreakBrick
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ Transform:
   m_Children:
   - {fileID: 9103747176072090204}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6789751364118451849
 SpriteRenderer:
