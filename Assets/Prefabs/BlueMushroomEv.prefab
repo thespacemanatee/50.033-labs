@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ecb00ac3e054a11818499e7b9aa0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: ee73ddc5d153f49feb86f0ab16a2e9d4, type: 2}
+  powerUp: {fileID: 11400000, guid: ee73ddc5d153f49feb86f0ab16a2e9d4, type: 2}
   onCollected:
     m_PersistentCalls:
       m_Calls:

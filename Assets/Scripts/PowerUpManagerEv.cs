@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public enum PowerUpIndex
@@ -56,6 +58,44 @@ public class PowerUpManagerEv : MonoBehaviour
     {
         powerUpInventory.Add(p, (int)p.index);
         AddPowerUpUI((int)p.index, p.powerUpTexture);
+    }
+
+    public void AttemptConsumePowerUp(KeyCode k)
+    {
+        Debug.Log("invoke" + k);
+        switch (k)
+        {
+            case KeyCode.Z:
+                ConsumePowerUp(0);
+                break;
+            case KeyCode.X:
+                ConsumePowerUp(1);
+                break;
+        }
+    }
+
+    private void ConsumePowerUp(int index)
+    {
+        var powerUp = powerUpInventory.Get(index);
+        if (powerUp == null) return;
+        // remove the powerup from the inventory
+        powerUpInventory.Remove(index);
+        // remove the powerup from the UI
+        powerUpIcons[index].SetActive(false);
+        // apply the powerup
+        marioJumpSpeed.ApplyChange(powerUp.absoluteJumpBooster);
+        marioMaxSpeed.ApplyChange(powerUp.absoluteSpeedBooster);
+
+        StartCoroutine(PowerUpEnd(powerUp));
+    }
+
+    // coroutine that invokes powerup end after 5 seconds
+    private IEnumerator PowerUpEnd(PowerUp powerUp)
+    {
+        yield return new WaitForSeconds(powerUp.duration);
+        // revert the powerup
+        marioJumpSpeed.ApplyChange(-powerUp.absoluteJumpBooster);
+        marioMaxSpeed.ApplyChange(-powerUp.absoluteSpeedBooster);
     }
 
     private void ResetValues()

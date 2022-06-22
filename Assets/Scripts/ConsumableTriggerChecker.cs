@@ -4,15 +4,13 @@ using UnityEngine.Events;
 
 public class ConsumableTriggerChecker : MonoBehaviour
 {
-    public PowerUp stats;
+    public PowerUp powerUp;
     public CustomPowerUpEvent onCollected;
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            onCollected.Invoke(stats);
-            Destroy(gameObject);
-        }
+        if (!col.gameObject.CompareTag("Player")) return;
+        onCollected.Invoke(powerUp);
+        Destroy(gameObject);
     }
 }

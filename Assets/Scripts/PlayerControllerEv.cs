@@ -9,6 +9,7 @@ public class PlayerControllerEv : MonoBehaviour
     public IntVariable marioMaxSpeed;
     public GameConstants gameConstants;
     public ParticleSystem dustCloud;
+    public CustomCastEvent onCastPowerUp;
 
     private float _force;
     private bool _isDead;
@@ -58,6 +59,17 @@ public class PlayerControllerEv : MonoBehaviour
             _marioSprite.flipX = false;
         }
 
+        if (Input.GetKeyDown("z"))
+        {
+            Debug.Log("invoking z");
+            onCastPowerUp.Invoke(KeyCode.Z);
+        }
+
+        if (Input.GetKeyDown("x"))
+        {
+            onCastPowerUp.Invoke(KeyCode.X);
+        }
+
         if (Input.GetKeyDown("p")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         _marioAnimator.SetFloat(XSpeed, Mathf.Abs(_marioBody.velocity.x));
@@ -66,7 +78,6 @@ public class PlayerControllerEv : MonoBehaviour
     // FixedUpdate may be called once per frame. See documentation for details.
     private void FixedUpdate()
     {
-        Debug.Log("fixed update");
         if (_isDead) return;
         // dynamic rigidbody
         var moveHorizontal = Input.GetAxis("Horizontal");

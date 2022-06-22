@@ -16,5 +16,5 @@ MonoBehaviour:
   index: 1
   powerUpTexture: {fileID: 2800000, guid: 09dca05585c734352a615197a1afab85, type: 3}
   absoluteSpeedBooster: 0
-  absoluteJumpBooster: 10
+  absoluteJumpBooster: 50
   duration: 5

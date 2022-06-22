@@ -38,7 +38,7 @@ Transform:
   - {fileID: 6894143387371803190}
   - {fileID: 6894143386327311014}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6894143386723316947
 SpriteRenderer:
@@ -175,6 +175,21 @@ MonoBehaviour:
   marioMaxSpeed: {fileID: 11400000, guid: 213d386fd81c341489447423423ef4c9, type: 2}
   gameConstants: {fileID: 11400000, guid: 33c3e527d537a4b78b720597a330d3e7, type: 2}
   dustCloud: {fileID: 6894143386327311015}
+  onCastPowerUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: eec80c0d1254347318243536fbae726b, type: 2}
+        m_TargetAssemblyTypeName: CastEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &482002925836641681
 MonoBehaviour:
   m_ObjectHideFlags: 0

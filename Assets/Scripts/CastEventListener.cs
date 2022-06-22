@@ -1,17 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-
 [System.Serializable]
-public class CustomPowerUpEvent : UnityEvent<PowerUp>
+public class CustomCastEvent : UnityEvent<KeyCode>
 {
 }
 
-public class PowerUpEventListener : MonoBehaviour
+public class CastEventListener : MonoBehaviour
 {
-    public PowerUpEvent @event;
-    public CustomPowerUpEvent response;
-
+    public CastEvent @event;
+    public CustomCastEvent response;
+    
     private void OnEnable()
     {
         @event.RegisterListener(this);
@@ -22,8 +21,8 @@ public class PowerUpEventListener : MonoBehaviour
         @event.UnregisterListener(this);
     }
 
-    public void OnEventRaised(PowerUp p)
+    public void OnEventRaised(KeyCode k)
     {
-        response.Invoke(p);
+        response.Invoke(k);
     }
 }
