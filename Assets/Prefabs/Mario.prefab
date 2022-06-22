@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6894143386723316944}
   - component: {fileID: 6894143386723316943}
   - component: {fileID: -8156284470041263919}
+  - component: {fileID: 482002925836641681}
   - component: {fileID: 6894143386723316942}
   m_Layer: 0
   m_Name: Mario
@@ -37,7 +38,7 @@ Transform:
   - {fileID: 6894143387371803190}
   - {fileID: 6894143386327311014}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6894143386723316947
 SpriteRenderer:
@@ -129,10 +130,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -173,6 +174,35 @@ MonoBehaviour:
   marioUpSpeed: {fileID: 11400000, guid: 38a40408972894dad826587c6324f6c3, type: 2}
   marioMaxSpeed: {fileID: 11400000, guid: 213d386fd81c341489447423423ef4c9, type: 2}
   gameConstants: {fileID: 11400000, guid: 33c3e527d537a4b78b720597a330d3e7, type: 2}
+  dustCloud: {fileID: 6894143386327311015}
+--- !u!114 &482002925836641681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894143386723316950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5476fab206484d3c88185435d8f600b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  event: {fileID: 11400000, guid: 8430aa50d70b549ffa964c9f1a347056, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8156284470041263919}
+        m_TargetAssemblyTypeName: PlayerControllerEv, Assembly-CSharp
+        m_MethodName: PlayerDiesSequence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &6894143386723316942
 AudioSource:
   m_ObjectHideFlags: 0
@@ -441,5 +471,10 @@ PrefabInstance:
 --- !u!4 &6894143386327311014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7871414536487578637, guid: c889129d3f03040598feb23ab5db7d12, type: 3}
+  m_PrefabInstance: {fileID: 3643424411871465131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6894143386327311015 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7871414536487578636, guid: c889129d3f03040598feb23ab5db7d12, type: 3}
   m_PrefabInstance: {fileID: 3643424411871465131}
   m_PrefabAsset: {fileID: 0}

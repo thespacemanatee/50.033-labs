@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +26,7 @@ public class PlayerControllerEv : MonoBehaviour
     private static readonly int OnGround = Animator.StringToHash("onGround");
     private static readonly int XSpeed = Animator.StringToHash("xSpeed");
     private static readonly int OnSkid = Animator.StringToHash("onSkid");
+    private static readonly int IsDead = Animator.StringToHash("isDead");
 
     // other components and internal state
     private void Start()
@@ -110,6 +112,23 @@ public class PlayerControllerEv : MonoBehaviour
         {
             Debug.Log("Collided with Goomba!");
         }
+    }
+    
+    public void PlayerDiesSequence()
+    {
+        Debug.Log("onPlayerDeath invoked");
+        _isDead = true;
+        _marioAnimator.SetBool(IsDead, true);
+        GetComponent<Collider2D>().enabled = false;
+        _marioBody.AddForce(Vector3.up * 30, ForceMode2D.Impulse);
+        _marioBody.gravityScale = 30;
+        StartCoroutine(Dead());
+    }
+
+    private IEnumerator Dead()
+    {
+        yield return new WaitForSeconds(1.0f);
+        _marioBody.bodyType = RigidbodyType2D.Static;
     }
 
     private void PlayJumpSound()
