@@ -13,6 +13,7 @@ public class ScoreMonitor : MonoBehaviour
 
     public void UpdateScore()
     {
+        Debug.Log("updating score");
         text.text = "Score: " + marioScore.Value;
     }
 }

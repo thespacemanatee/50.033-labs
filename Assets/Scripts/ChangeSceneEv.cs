@@ -18,7 +18,7 @@ public class ChangeSceneEv : MonoBehaviour
     private IEnumerator WaitSoundClip(string sceneName)
     {
         yield return new WaitUntil(() => !changeSceneSound.isPlaying);
-        StartCoroutine(ChangeScene("MarioGameEVLevel2"));
+        StartCoroutine(ChangeScene("MarioLevel2"));
     }
 
     private static IEnumerator ChangeScene(string sceneName)

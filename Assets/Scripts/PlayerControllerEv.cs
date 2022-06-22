@@ -31,7 +31,6 @@ public class PlayerControllerEv : MonoBehaviour
     // other components and internal state
     private void Start()
     {
-        Application.targetFrameRate = 30;
         _marioBody = GetComponent<Rigidbody2D>();
         _marioAnimator = GetComponent<Animator>();
         _marioSprite = GetComponent<SpriteRenderer>();
@@ -67,6 +66,7 @@ public class PlayerControllerEv : MonoBehaviour
     // FixedUpdate may be called once per frame. See documentation for details.
     private void FixedUpdate()
     {
+        Debug.Log("fixed update");
         if (_isDead) return;
         // dynamic rigidbody
         var moveHorizontal = Input.GetAxis("Horizontal");

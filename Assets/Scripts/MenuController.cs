@@ -4,7 +4,7 @@ public class MenuController : MonoBehaviour
 {
     private void Awake()
     {
-        Time.timeScale = 0.0f;
+        // Time.timeScale = 0.0f;
     }
 
     public void StartButtonClicked()
