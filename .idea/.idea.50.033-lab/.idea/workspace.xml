@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c8f776c-1230-4e29-acb4-a26bc24b3e49" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/PowerUpEvents/OnCastPowerUp.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/PowerUpEvents/OnCastPowerUp.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CastEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CastEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CastEventListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CastEventListener.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.50.033-lab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.50.033-lab/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mario.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mario.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemySpawnManager.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemySpawnManager.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MarioLevel1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MarioLevel1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ConsumableTriggerChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ConsumableTriggerChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyControllerEv.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyControllerEv.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerControllerEv.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerControllerEv.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpEventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpEventListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUpManagerEv.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUpManagerEv.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MarioLevel2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MarioLevel2.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +158,7 @@
       <workItem from="1655306692821" duration="5720000" />
       <workItem from="1655350772350" duration="2624000" />
       <workItem from="1655892394399" duration="12812000" />
-      <workItem from="1655913953491" duration="2566000" />
+      <workItem from="1655913953491" duration="3411000" />
     </task>
     <servers />
   </component>
