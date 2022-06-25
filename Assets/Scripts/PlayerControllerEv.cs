@@ -17,7 +17,6 @@ public class PlayerControllerEv : MonoBehaviour
     private bool _isSpacebarDown;
     private bool _faceRightState = true;
     private bool _onGroundState = true;
-    private bool _countScoreState;
 
     private Rigidbody2D _marioBody;
     private Animator _marioAnimator;
@@ -102,7 +101,6 @@ public class PlayerControllerEv : MonoBehaviour
             _onGroundState = false;
             // part 2
             _marioAnimator.SetBool(OnGround, _onGroundState);
-            _countScoreState = true;
         }
     }
 

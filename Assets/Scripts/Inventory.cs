@@ -11,7 +11,7 @@ public class Inventory<T> : ScriptableObject
     {
         for (var i = 0; i < size; i++)
         {
-            items.Add(default(T));
+            items.Add(default);
         }
     }
 
@@ -30,7 +30,7 @@ public class Inventory<T> : ScriptableObject
     public void Remove(int index)
     {
         if (index < items.Count)
-            items[index] = default(T);
+            items[index] = default;
     }
 
     public T Get(int index)
